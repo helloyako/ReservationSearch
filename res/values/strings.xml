@@ -4,4 +4,5 @@
     <string name="Set">Set</string>
     <string name="check">test</string>
     <string name="TAG">ReservationSearch</string>
+    <string name="addAlarm">알람 추가</string>
 </resources>
