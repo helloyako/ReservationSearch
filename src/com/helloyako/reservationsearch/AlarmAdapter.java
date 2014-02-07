@@ -6,6 +6,7 @@ import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
@@ -56,10 +57,13 @@ public class AlarmAdapter extends BaseAdapter{
 //		week.setText(alarmInfo.get);
 		
 		CheckBox alarmActivation = (CheckBox) convertView.findViewById(R.id.alarm_activation);
+		alarmActivation.setFocusable(false);
 		alarmActivation.setChecked(alarmInfo.isActivation());
 		
 		return convertView;
 	}
+	
+	
 
 
 }
