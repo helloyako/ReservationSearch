@@ -1,19 +1,11 @@
 package com.helloyako.reservationsearch;
 
 public class AlarmInfo {
+	private long id;
 	private String alarmDate;
 	private String query;
 	private boolean isRepeat;
 	private boolean isActivation;
-	
-	public AlarmInfo(String alarmDate, String query, boolean isRepeat,
-			boolean isActivation) {
-		super();
-		this.alarmDate = alarmDate;
-		this.query = query;
-		this.isRepeat = isRepeat;
-		this.isActivation = isActivation;
-	}
 
 	public String getAlarmDate() {
 		return alarmDate;
@@ -45,5 +37,13 @@ public class AlarmInfo {
 
 	public void setActivation(boolean isActivation) {
 		this.isActivation = isActivation;
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
 	}
 }

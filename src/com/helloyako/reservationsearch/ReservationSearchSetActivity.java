@@ -8,11 +8,9 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -71,7 +69,7 @@ public class ReservationSearchSetActivity extends Activity implements OnTimeChan
     	long remainderMin = remainderSec / 60;
     	long remainderHour = remainderMin / 60;
     	
-//    	am.setRepeating(AlarmManager.RTC_WAKEUP, calendarTimeInMillis, 0, sender);
+    	am.setRepeating(AlarmManager.RTC_WAKEUP, calendarTimeInMillis, 0, sender);
     	
     	Toast.makeText(ReservationSearchSetActivity.this,remainderHour + "시간" + remainderMin + "분" + remainderSec + "초 후에 알람이 울립니다.", Toast.LENGTH_LONG).show();
 //    	finish();

@@ -5,22 +5,24 @@ import java.util.ArrayList;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 
 public class ReservationSearchListActivity extends Activity {
 	
 	private ArrayList<AlarmInfo> alarmInfoList;
+	private ReservationSearchDatasource datasource;
 
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 	    super.onCreate(savedInstanceState);
 	    setContentView(R.layout.reservation_search_list);
+	    
+	    datasource = new ReservationSearchDatasource(this);
+	    datasource.open();
 	    
 	    alarmInfoList = new ArrayList<AlarmInfo>();
 	    
