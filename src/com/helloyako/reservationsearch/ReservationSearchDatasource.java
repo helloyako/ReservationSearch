@@ -37,7 +37,7 @@ public class ReservationSearchDatasource {
 		database.insert(ReservationSearchSQLiteHelper.DB_TABLE_NAME, null, values);
 	}
 	
-	public void deleteAlarm(long index){
+	public void deleteAlarm(int index){
 		database.delete(ReservationSearchSQLiteHelper.DB_TABLE_NAME, ReservationSearchSQLiteHelper._INDEX + "=" + index, null);
 	}
 	
@@ -57,6 +57,36 @@ public class ReservationSearchDatasource {
 		return alarmInfoList;
 	}
 	
+	public int getLastIndex(){
+		String[] indexColum = {ReservationSearchSQLiteHelper._INDEX};
+		String orderBy = ReservationSearchSQLiteHelper._INDEX + " DESC";
+		Cursor cursor = database.query(ReservationSearchSQLiteHelper.DB_TABLE_NAME, indexColum, null, null, null, null, orderBy,"1");
+		cursor.moveToFirst();
+		int lastIndex = 0;
+		if(!cursor.isAfterLast()){
+			int indexIndex = cursor.getColumnIndex(ReservationSearchSQLiteHelper._INDEX);
+			lastIndex = cursor.getInt(indexIndex);
+		}
+		closeCursor(cursor);
+		return lastIndex;
+	}
+	
+	public AlarmInfo getAlarmInfo(int index){
+		Cursor cursor = null;
+		String selection = ReservationSearchSQLiteHelper._INDEX + "=?";
+		String[] selectionArgs = {Integer.toString(index)};
+		cursor = database.query(ReservationSearchSQLiteHelper.DB_TABLE_NAME, allColums, selection, selectionArgs, null, null, null);
+		cursor.moveToFirst();
+		AlarmInfo alarmInfo = null;
+		if(!cursor.isAfterLast()){
+			alarmInfo = cursorToAlarmInfo(cursor);
+		}
+		
+		closeCursor(cursor);
+		
+		return alarmInfo;
+	}
+	
 	private void closeCursor(Cursor cursor){
 		if(cursor != null){
 			cursor.close();
@@ -65,7 +95,7 @@ public class ReservationSearchDatasource {
 	
 	private AlarmInfo cursorToAlarmInfo(Cursor cursor){
 		AlarmInfo alarmInfo = new AlarmInfo();
-		int idIndex = cursor.getColumnIndex(ReservationSearchSQLiteHelper._INDEX);
+		int indexIndex = cursor.getColumnIndex(ReservationSearchSQLiteHelper._INDEX);
 		int alarmYearIndex = cursor.getColumnIndex(ReservationSearchSQLiteHelper.ALARM_YEAR);
 		int alarmMonthIndex = cursor.getColumnIndex(ReservationSearchSQLiteHelper.ALARM_MONTH);
 		int alarmDayOfMonthIndex = cursor.getColumnIndex(ReservationSearchSQLiteHelper.ALARM_DAY_OF_MONTH);
@@ -74,7 +104,7 @@ public class ReservationSearchDatasource {
 		int queryIndex = cursor.getColumnIndex(ReservationSearchSQLiteHelper.QUERY);
 		int isActivationIndex = cursor.getColumnIndex(ReservationSearchSQLiteHelper.IS_ACTIVATION);
 		
-		alarmInfo.setId(cursor.getLong(idIndex));
+		alarmInfo.setIndex(cursor.getInt(indexIndex));
 		alarmInfo.setYear(cursor.getInt(alarmYearIndex));
 		alarmInfo.setMonth(cursor.getInt(alarmMonthIndex));
 		alarmInfo.setDayOfMonth(cursor.getInt(alarmDayOfMonthIndex));
@@ -82,6 +112,7 @@ public class ReservationSearchDatasource {
 		alarmInfo.setMin(cursor.getInt(alarmMinIndex));
 		alarmInfo.setQuery(cursor.getString(queryIndex));
 		alarmInfo.setActivation(cursor.getInt(isActivationIndex) > 0);
+		alarmInfo.setRepeat(false);
 		
 		return alarmInfo;
 	}

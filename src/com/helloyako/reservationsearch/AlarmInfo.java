@@ -1,7 +1,7 @@
 package com.helloyako.reservationsearch;
 
 public class AlarmInfo {
-	private long id;
+	private int index;
 	private int year;
 	private int month;
 	private int dayOfMonth;
@@ -74,11 +74,11 @@ public class AlarmInfo {
 		this.isActivation = isActivation;
 	}
 
-	public long getId() {
-		return id;
+	public int getIndex() {
+		return index;
 	}
 
-	public void setId(long id) {
-		this.id = id;
+	public void setIndex(int index) {
+		this.index = index;
 	}
 }

@@ -72,14 +72,22 @@ public class ReservationSearchSetActivity extends Activity implements
 					Toast.LENGTH_LONG).show();
 			return;
 		}
-		intent.putExtra("query", query);
-		PendingIntent sender = PendingIntent.getBroadcast(
-				ReservationSearchSetActivity.this, 0, intent, 0);
+		
 		dataSource.createAlarm(mCalendar.get(Calendar.YEAR),
 				mCalendar.get(Calendar.MONTH) + 1,
 				mCalendar.get(Calendar.DAY_OF_MONTH),
 				mCalendar.get(Calendar.HOUR_OF_DAY),
 				mCalendar.get(Calendar.MINUTE), query);
+		
+		int index = dataSource.getLastIndex();
+		Bundle bundle = new Bundle();
+		bundle.putString("query", query);
+		bundle.putInt("index", index);
+		intent.putExtras(bundle);
+		
+		PendingIntent sender = PendingIntent.getBroadcast(
+				ReservationSearchSetActivity.this, index , intent, PendingIntent.FLAG_CANCEL_CURRENT);
+		
 
 		AlarmManager am = (AlarmManager) getSystemService(ALARM_SERVICE);
 		long calendarTimeInMillis = mCalendar.getTimeInMillis();

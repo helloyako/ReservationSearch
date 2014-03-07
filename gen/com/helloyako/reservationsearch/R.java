@@ -8,6 +8,9 @@
 package com.helloyako.reservationsearch;
 
 public final class R {
+    public static final class array {
+        public static final int dialog=0x7f060000;
+    }
     public static final class attr {
     }
     public static final class dimen {
@@ -32,26 +35,26 @@ public final class R {
         public static final int rs_icon=0x7f020002;
     }
     public static final class id {
-        public static final int LinearLayout1=0x7f080000;
-        public static final int action_settings=0x7f080013;
-        public static final int alarm_activation=0x7f08000c;
-        public static final int alarm_date=0x7f080008;
-        public static final int alarm_time=0x7f080009;
-        public static final int checkBox1=0x7f080004;
-        public static final int datePicker=0x7f080010;
-        public static final int datePicker1=0x7f080001;
-        public static final int editText1=0x7f080003;
-        public static final int imageView1=0x7f08000b;
-        public static final int listView=0x7f080007;
-        public static final int main_add_alarm_btn=0x7f080006;
-        public static final int query=0x7f08000a;
-        public static final int queryEditText=0x7f080012;
-        public static final int scrollView1=0x7f08000f;
-        public static final int set_cancel_btn=0x7f08000d;
-        public static final int set_save_btn=0x7f08000e;
-        public static final int setbtn=0x7f080005;
-        public static final int timePicker=0x7f080011;
-        public static final int timePicker1=0x7f080002;
+        public static final int LinearLayout1=0x7f090000;
+        public static final int action_settings=0x7f090013;
+        public static final int alarm_activation=0x7f09000c;
+        public static final int alarm_date=0x7f090008;
+        public static final int alarm_time=0x7f090009;
+        public static final int checkBox1=0x7f090004;
+        public static final int datePicker=0x7f090010;
+        public static final int datePicker1=0x7f090001;
+        public static final int editText1=0x7f090003;
+        public static final int imageView1=0x7f09000b;
+        public static final int listView=0x7f090007;
+        public static final int main_add_alarm_btn=0x7f090006;
+        public static final int query=0x7f09000a;
+        public static final int queryEditText=0x7f090012;
+        public static final int scrollView1=0x7f09000f;
+        public static final int set_cancel_btn=0x7f09000d;
+        public static final int set_save_btn=0x7f09000e;
+        public static final int setbtn=0x7f090005;
+        public static final int timePicker=0x7f090011;
+        public static final int timePicker1=0x7f090002;
     }
     public static final class layout {
         public static final int activity_reservation_search=0x7f030000;
@@ -60,7 +63,7 @@ public final class R {
         public static final int reservation_search_set=0x7f030003;
     }
     public static final class menu {
-        public static final int reservation_search=0x7f070000;
+        public static final int reservation_search=0x7f080000;
     }
     public static final class string {
         public static final int DataSource=0x7f050007;
@@ -96,10 +99,10 @@ public final class R {
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f060000;
+        public static final int AppBaseTheme=0x7f070000;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f060001;
+        public static final int AppTheme=0x7f070001;
     }
 }
