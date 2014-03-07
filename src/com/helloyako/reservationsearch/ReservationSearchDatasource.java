@@ -3,6 +3,7 @@ package com.helloyako.reservationsearch;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -22,6 +23,22 @@ public class ReservationSearchDatasource {
 	
 	public void close(){
 		dbHelper.close();
+	}
+	
+	public void createAlarm(int year, int month, int dayOfMonth, int hour, int min, String query){
+		ContentValues values = new ContentValues();
+		values.put(ReservationSearchSQLiteHelper.ALARM_YEAR, year);
+		values.put(ReservationSearchSQLiteHelper.ALARM_MONTH, month);
+		values.put(ReservationSearchSQLiteHelper.ALARM_DAY_OF_MONTH, dayOfMonth);
+		values.put(ReservationSearchSQLiteHelper.ALARM_HOUR, hour);
+		values.put(ReservationSearchSQLiteHelper.ALARM_MIN, min);
+		values.put(ReservationSearchSQLiteHelper.QUERY, query);
+		values.put(ReservationSearchSQLiteHelper.IS_ACTIVATION, 1);
+		database.insert(ReservationSearchSQLiteHelper.DB_TABLE_NAME, null, values);
+	}
+	
+	public void deleteAlarm(long index){
+		database.delete(ReservationSearchSQLiteHelper.DB_TABLE_NAME, ReservationSearchSQLiteHelper._INDEX + "=" + index, null);
 	}
 	
 	public List<AlarmInfo> getAllAlarmInfo(){
@@ -49,12 +66,20 @@ public class ReservationSearchDatasource {
 	private AlarmInfo cursorToAlarmInfo(Cursor cursor){
 		AlarmInfo alarmInfo = new AlarmInfo();
 		int idIndex = cursor.getColumnIndex(ReservationSearchSQLiteHelper._INDEX);
-		int alarmDateIndex = cursor.getColumnIndex(ReservationSearchSQLiteHelper.ALARM_DATE);
+		int alarmYearIndex = cursor.getColumnIndex(ReservationSearchSQLiteHelper.ALARM_YEAR);
+		int alarmMonthIndex = cursor.getColumnIndex(ReservationSearchSQLiteHelper.ALARM_MONTH);
+		int alarmDayOfMonthIndex = cursor.getColumnIndex(ReservationSearchSQLiteHelper.ALARM_DAY_OF_MONTH);
+		int alarmHourIndex = cursor.getColumnIndex(ReservationSearchSQLiteHelper.ALARM_HOUR);
+		int alarmMinIndex = cursor.getColumnIndex(ReservationSearchSQLiteHelper.ALARM_MIN);
 		int queryIndex = cursor.getColumnIndex(ReservationSearchSQLiteHelper.QUERY);
 		int isActivationIndex = cursor.getColumnIndex(ReservationSearchSQLiteHelper.IS_ACTIVATION);
 		
 		alarmInfo.setId(cursor.getLong(idIndex));
-		alarmInfo.setAlarmDate(cursor.getString(alarmDateIndex));
+		alarmInfo.setYear(cursor.getInt(alarmYearIndex));
+		alarmInfo.setMonth(cursor.getInt(alarmMonthIndex));
+		alarmInfo.setDayOfMonth(cursor.getInt(alarmDayOfMonthIndex));
+		alarmInfo.setHour(cursor.getInt(alarmHourIndex));
+		alarmInfo.setMin(cursor.getInt(alarmMinIndex));
 		alarmInfo.setQuery(cursor.getString(queryIndex));
 		alarmInfo.setActivation(cursor.getInt(isActivationIndex) > 0);
 		

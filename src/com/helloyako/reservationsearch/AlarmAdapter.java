@@ -46,14 +46,19 @@ public class AlarmAdapter extends BaseAdapter{
 		}
 		AlarmInfo alarmInfo = this.alarmInfoList.get(pos);
 		
+		int year = alarmInfo.getYear();
+		int month = alarmInfo.getMonth();
+		int dayOfMonth = alarmInfo.getDayOfMonth();
+		int hour = alarmInfo.getHour();
+		int min = alarmInfo.getMin();
+		
 		TextView alarmDate = (TextView) convertView.findViewById(R.id.alarm_date);
-		alarmDate.setText(alarmInfo.getAlarmDate());
+		alarmDate.setText(year + "년" + month + "월" + dayOfMonth + "일");
+		TextView alarmTime = (TextView) convertView.findViewById(R.id.alarm_time);
+		alarmTime.setText(hour + "시" + min + "분");
 		
 		TextView query = (TextView) convertView.findViewById(R.id.query);
 		query.setText(alarmInfo.getQuery());
-		
-//		TextView week = (TextView) convertView.findViewById(R.id.week);
-//		week.setText(alarmInfo.get);
 		
 		CheckBox alarmActivation = (CheckBox) convertView.findViewById(R.id.alarm_activation);
 		alarmActivation.setFocusable(false);

@@ -10,7 +10,11 @@ public class ReservationSearchSQLiteHelper extends SQLiteOpenHelper {
 
 	public static final String DB_TABLE_NAME = "reservationsearch";
 	public static final String _INDEX = "_index";
-	public static final String ALARM_DATE = "alarm_date";
+	public static final String ALARM_YEAR = "alarm_year";
+	public static final String ALARM_MONTH = "alarm_month";
+	public static final String ALARM_DAY_OF_MONTH = "alarm_day_of_month";
+	public static final String ALARM_HOUR = "alarm_hour";
+	public static final String ALARM_MIN = "alarm_min";
 	public static final String QUERY = "_query";
 	public static final String IS_ACTIVATION = "_is_activation";
 	
@@ -21,7 +25,11 @@ public class ReservationSearchSQLiteHelper extends SQLiteOpenHelper {
 			DB_TABLE_NAME,
 			"(",
 			_INDEX," INTEGER PRIMARY KEY AUTOINCREMENT, ",
-			ALARM_DATE," DATETIME, ",
+			ALARM_YEAR," INTEGER, ",
+			ALARM_MONTH," INTEGER, ",
+			ALARM_DAY_OF_MONTH," INTEGER, ",
+			ALARM_HOUR," INTEGER, ",
+			ALARM_MIN," INTEGER, ",
 			QUERY," TEXT, ",
 			IS_ACTIVATION, " BOOLEAN",
 			");"
