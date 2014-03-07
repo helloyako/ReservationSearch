@@ -3,7 +3,9 @@ package com.helloyako.reservationsearch;
 import java.util.ArrayList;
 
 import android.app.Activity;
+import android.app.AlarmManager;
 import android.app.AlertDialog;
+import android.app.PendingIntent;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -44,7 +46,7 @@ public class ReservationSearchListActivity extends Activity {
 					@Override
 					public void onClick(DialogInterface dialog, int which) {
 						if(which == 0){
-							//TODO Edit
+							reservationSearchSetActivityStart(true);
 						} else {
 							deleteAlarm(alarmInfo);
 							refreshListView();
@@ -61,10 +63,17 @@ public class ReservationSearchListActivity extends Activity {
 	    addAlarmBtn.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
-				Intent i = new Intent(getApplicationContext(), ReservationSearchSetActivity.class);
-				startActivity(i);
+				reservationSearchSetActivityStart(true);
 			}
 		});
+	}
+	
+	private void reservationSearchSetActivityStart(boolean isNew){
+		Intent i = new Intent(getApplicationContext(), ReservationSearchSetActivity.class);
+		Bundle extras = new Bundle();
+		extras.putBoolean("new", true);
+		i.putExtras(extras);
+		startActivity(i);
 	}
 	
 	@Override
@@ -87,7 +96,13 @@ public class ReservationSearchListActivity extends Activity {
 	}
 	
 	private void deleteAlarm(AlarmInfo alarmInfo){
-		//TODO delete Alarm from AlarmManager
+		int alarmIndex = alarmInfo.getIndex();
+		String alarmQuery = alarmInfo.getQuery();
+		AlarmManager am = (AlarmManager) getSystemService(ALARM_SERVICE);
+		
+		PendingIntent operation = ReservationSearchUtils.getPendingIntentForAlarmReceiver(getApplicationContext(), alarmQuery, alarmIndex);
+		
+		am.cancel(operation);
 		dataSource.deleteAlarm(alarmInfo.getIndex());
 	}
 }

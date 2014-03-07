@@ -3,10 +3,11 @@ package com.helloyako.reservationsearch;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
+import org.apache.commons.lang3.StringUtils;
+
 import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -64,30 +65,25 @@ public class ReservationSearchSetActivity extends Activity implements
 	}
 
 	private void setAlarm() {
-		Intent intent = new Intent(getApplicationContext(), AlarmReceiver.class);
 		EditText et = (EditText) findViewById(R.id.queryEditText);
 		String query = et.getText().toString();
-		if (query.equals("")) {
-			Toast.makeText(ReservationSearchSetActivity.this, "검색어를 입력해주세요",
+		if (StringUtils.isBlank(query)) {
+			Toast.makeText(ReservationSearchSetActivity.this, getString(R.string.query_warning),
 					Toast.LENGTH_LONG).show();
 			return;
 		}
-		
+
 		dataSource.createAlarm(mCalendar.get(Calendar.YEAR),
 				mCalendar.get(Calendar.MONTH) + 1,
 				mCalendar.get(Calendar.DAY_OF_MONTH),
 				mCalendar.get(Calendar.HOUR_OF_DAY),
 				mCalendar.get(Calendar.MINUTE), query);
-		
+
 		int index = dataSource.getLastIndex();
-		Bundle bundle = new Bundle();
-		bundle.putString("query", query);
-		bundle.putInt("index", index);
-		intent.putExtras(bundle);
-		
-		PendingIntent sender = PendingIntent.getBroadcast(
-				ReservationSearchSetActivity.this, index , intent, PendingIntent.FLAG_CANCEL_CURRENT);
-		
+
+		PendingIntent sender = ReservationSearchUtils
+				.getPendingIntentForAlarmReceiver(getApplicationContext(),
+						query, index);
 
 		AlarmManager am = (AlarmManager) getSystemService(ALARM_SERVICE);
 		long calendarTimeInMillis = mCalendar.getTimeInMillis();

@@ -72,10 +72,11 @@ public final class R {
         public static final int action_settings=0x7f050001;
         public static final int addAlarm=0x7f050005;
         public static final int app_name=0x7f050000;
-        public static final int cancel=0x7f050008;
+        public static final int cancel=0x7f050009;
         public static final int check=0x7f050003;
         public static final int queryHint=0x7f050006;
-        public static final int save=0x7f050009;
+        public static final int query_warning=0x7f050008;
+        public static final int save=0x7f05000a;
     }
     public static final class style {
         /** 
