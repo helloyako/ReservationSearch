@@ -7,6 +7,7 @@
         android:minSdkVersion="8"
         android:targetSdkVersion="19" />
     <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
 
      <application
         android:allowBackup="true"
@@ -25,6 +26,15 @@
             </intent-filter>
         </activity>
         <activity android:name="ReservationSearchSetActivity"></activity>
+        <receiver android:name="AlarmBootReciever"
+            android:enabled="true"
+            android:exported="false"
+            android:permission="android.permission.RECEIVE_BOOT_COMPLETED"
+            android:label="AlarmBootReciever">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

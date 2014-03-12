@@ -47,7 +47,7 @@ public class AlarmAdapter extends BaseAdapter{
 		AlarmInfo alarmInfo = this.alarmInfoList.get(pos);
 		
 		int year = alarmInfo.getYear();
-		int month = alarmInfo.getMonth();
+		int month = alarmInfo.getMonth() + 1;
 		int dayOfMonth = alarmInfo.getDayOfMonth();
 		int hour = alarmInfo.getHour();
 		int min = alarmInfo.getMin();

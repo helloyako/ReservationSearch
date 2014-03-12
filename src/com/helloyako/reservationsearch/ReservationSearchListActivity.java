@@ -100,7 +100,7 @@ public class ReservationSearchListActivity extends Activity {
 		String alarmQuery = alarmInfo.getQuery();
 		AlarmManager am = (AlarmManager) getSystemService(ALARM_SERVICE);
 		
-		PendingIntent operation = ReservationSearchUtils.getPendingIntentForAlarmReceiver(getApplicationContext(), alarmQuery, alarmIndex);
+		PendingIntent operation = ReservationSearchCommon.getPendingIntentForAlarmReceiver(getApplicationContext(), alarmQuery, alarmIndex);
 		
 		am.cancel(operation);
 		dataSource.deleteAlarm(alarmInfo.getIndex());

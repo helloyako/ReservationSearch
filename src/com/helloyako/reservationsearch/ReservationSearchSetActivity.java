@@ -74,14 +74,14 @@ public class ReservationSearchSetActivity extends Activity implements
 		}
 
 		dataSource.createAlarm(mCalendar.get(Calendar.YEAR),
-				mCalendar.get(Calendar.MONTH) + 1,
+				mCalendar.get(Calendar.MONTH),
 				mCalendar.get(Calendar.DAY_OF_MONTH),
 				mCalendar.get(Calendar.HOUR_OF_DAY),
 				mCalendar.get(Calendar.MINUTE), query);
 
 		int index = dataSource.getLastIndex();
 
-		PendingIntent sender = ReservationSearchUtils
+		PendingIntent sender = ReservationSearchCommon
 				.getPendingIntentForAlarmReceiver(getApplicationContext(),
 						query, index);
 
