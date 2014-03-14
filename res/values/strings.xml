@@ -1,8 +1,10 @@
 <resources>
  	<string name="app_name">예약검색</string>
     <string name="action_settings">Settings</string>
+    <string name="cancel">취소</string>
+    <string name="save">저장</string>
+    <string name="check">check</string>
     <string name="Set">Set</string>
-    <string name="check">test</string>
     <string name="TAG">ReservationSearch</string>
     <string name="addAlarm">알람 추가</string>
     <string name="queryHint">검색어를 입력하세요.</string>

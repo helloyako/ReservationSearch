@@ -11,74 +11,53 @@ public class AlarmInfo {
 	private boolean isRepeat;
 	private boolean isActivation;
 	
+	public AlarmInfo(int index, int year, int month, int dayOfMonth, int hour,
+			int min, String query, boolean isRepeat, boolean isActivation) {
+		super();
+		this.index = index;
+		this.year = year;
+		this.month = month;
+		this.dayOfMonth = dayOfMonth;
+		this.hour = hour;
+		this.min = min;
+		this.query = query;
+		this.isRepeat = isRepeat;
+		this.isActivation = isActivation;
+	}
+
 	public int getYear() {
 		return year;
-	}
-	
-	public void setYear(int year) {
-		this.year = year;
 	}
 	
 	public int getMonth() {
 		return month;
 	}
 	
-	public void setMonth(int month) {
-		this.month = month;
-	}
-	
 	public int getDayOfMonth() {
 		return dayOfMonth;
-	}
-	
-	public void setDayOfMonth(int dayOfMonth) {
-		this.dayOfMonth = dayOfMonth;
 	}
 	
 	public int getHour() {
 		return hour;
 	}
-	public void setHour(int hour) {
-		this.hour = hour;
-	}
 	
 	public int getMin() {
 		return min;
-	}
-	
-	public void setMin(int min) {
-		this.min = min;
 	}
 
 	public String getQuery() {
 		return query;
 	}
 
-	public void setQuery(String query) {
-		this.query = query;
-	}
-
 	public boolean isRepeat() {
 		return isRepeat;
-	}
-
-	public void setRepeat(boolean isRepeat) {
-		this.isRepeat = isRepeat;
 	}
 
 	public boolean isActivation() {
 		return isActivation;
 	}
 
-	public void setActivation(boolean isActivation) {
-		this.isActivation = isActivation;
-	}
-
 	public int getIndex() {
 		return index;
-	}
-
-	public void setIndex(int index) {
-		this.index = index;
 	}
 }
