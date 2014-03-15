@@ -14,19 +14,17 @@ public final class R {
     public static final class attr {
     }
     public static final class dimen {
-        /**  Default screen margins, per the Android Design guidelines. 
-
+        /** 
          Customize dimensions originally defined in res/values/dimens.xml (such as
          screen margins) for sw720dp devices (e.g. 10" tablets) in landscape here.
     
          */
         public static final int activity_horizontal_margin=0x7f040000;
-        public static final int activity_vertical_margin=0x7f040001;
-        public static final int common_margin_bottom=0x7f040003;
-        public static final int common_margin_left=0x7f040004;
-        public static final int common_margin_right=0x7f040005;
-        public static final int common_margin_top=0x7f040002;
-        public static final int line_hight=0x7f040006;
+        public static final int common_margin_bottom=0x7f040002;
+        public static final int common_margin_left=0x7f040003;
+        public static final int common_margin_right=0x7f040004;
+        public static final int common_margin_top=0x7f040001;
+        public static final int line_hight=0x7f040005;
     }
     public static final class drawable {
         public static final int ic_launcher=0x7f020000;
