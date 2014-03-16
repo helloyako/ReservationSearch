@@ -130,19 +130,19 @@ public class ReservationSearchSetActivity extends Activity implements
 		}
 		
 		if(remainderDay > 0){
-			remainderMsg.append(Long.toString(remainderDay) + "일");
+			remainderMsg.append(Long.toString(remainderDay) + getString(R.string.Day));
 		}
 		
 		if(remainderHour > 0){
-			remainderMsg.append(Long.toString(remainderHour) + "시간");
+			remainderMsg.append(Long.toString(remainderHour) + getString(R.string.Hour));
 		}
 		
 		if(remainderMin > 0){
-			remainderMsg.append(Long.toString(remainderMin) + "분");
+			remainderMsg.append(Long.toString(remainderMin) + getString(R.string.Min));
 		}
 		
-		remainderMsg.append(Long.toString(remainderSec) + "초");
-		remainderMsg.append("뒤에 알람이 울립니다.");
+		remainderMsg.append(Long.toString(remainderSec) + getString(R.string.Sec));
+		remainderMsg.append(getString(R.string.RemainderInfo));
 		
 		
 

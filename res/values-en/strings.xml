@@ -9,6 +9,11 @@
     <string name="addAlarm">Add Alarm</string>
     <string name="queryHint">input query</string>
     <string name="DataSource">DataSource</string>
+    <string name="Day">day</string>
+    <string name="Hour">hour</string>
+    <string name="Min">min</string>
+    <string name="Sec">sec</string>
+    <string name="RemainderInfo">Alarm</string>
     <string-array name="dialog">
         <item >edit</item>
         <item >delete</item>

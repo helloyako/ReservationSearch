@@ -9,6 +9,11 @@
     <string name="addAlarm">알람 추가</string>
     <string name="queryHint">검색어를 입력하세요.</string>
     <string name="DataSource">DataSource</string>
+    <string name="Day">일</string>
+    <string name="Hour">시간</string>
+    <string name="Min">분</string>
+    <string name="Sec">초</string>
+    <string name="RemainderInfo">뒤에 알람이 울립니다.</string>
     <string-array name="dialog">
         <item >편집</item>
         <item >삭제</item>

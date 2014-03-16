@@ -59,6 +59,11 @@ public final class R {
     }
     public static final class string {
         public static final int DataSource=0x7f050009;
+        public static final int Day=0x7f05000a;
+        public static final int Hour=0x7f05000b;
+        public static final int Min=0x7f05000c;
+        public static final int RemainderInfo=0x7f05000e;
+        public static final int Sec=0x7f05000d;
         public static final int Set=0x7f050005;
         public static final int TAG=0x7f050006;
         public static final int action_settings=0x7f050001;
@@ -67,7 +72,7 @@ public final class R {
         public static final int cancel=0x7f050002;
         public static final int check=0x7f050004;
         public static final int queryHint=0x7f050008;
-        public static final int query_warning=0x7f05000a;
+        public static final int query_warning=0x7f05000f;
         public static final int save=0x7f050003;
     }
     public static final class style {
