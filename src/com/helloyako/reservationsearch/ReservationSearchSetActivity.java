@@ -112,6 +112,7 @@ public class ReservationSearchSetActivity extends Activity implements
 		long remainderMin = 0;
 		long remainderHour = 0;
 		long remainderDay = 0;
+		StringBuffer remainderMsg = new StringBuffer();
 		
 		if(remainderSec >= 60){
 			remainderMin = remainderSec / 60;
@@ -127,15 +128,30 @@ public class ReservationSearchSetActivity extends Activity implements
 			remainderDay = remainderHour / 24;
 			remainderHour = remainderHour % 24;
 		}
+		
+		if(remainderDay > 0){
+			remainderMsg.append(Long.toString(remainderDay) + "일");
+		}
+		
+		if(remainderHour > 0){
+			remainderMsg.append(Long.toString(remainderHour) + "시간");
+		}
+		
+		if(remainderMin > 0){
+			remainderMsg.append(Long.toString(remainderMin) + "분");
+		}
+		
+		remainderMsg.append(Long.toString(remainderSec) + "초");
+		remainderMsg.append("뒤에 알람이 울립니다.");
+		
+		
 
 		AlarmManager am = (AlarmManager) getSystemService(ALARM_SERVICE);
 		am.setRepeating(AlarmManager.RTC_WAKEUP, calendarTimeInMillis, 0,
 				sender);
 
 		Toast.makeText(
-				ReservationSearchSetActivity.this,
-				remainderDay + "일" + remainderHour + "시간" + remainderMin + "분" + remainderSec
-						+ "초 후에 알람이 울립니다.", Toast.LENGTH_LONG).show();
+				ReservationSearchSetActivity.this,remainderMsg.toString(), Toast.LENGTH_LONG).show();
 		finish();
 	}
 
