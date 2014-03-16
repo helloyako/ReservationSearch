@@ -106,11 +106,27 @@ public class ReservationSearchSetActivity extends Activity implements
 						query, index);
 		
 		long calendarTimeInMillis = mCalendar.getTimeInMillis();
-		long timeDiffInMillis = calendarTimeInMillis
+		long remainderMillis = calendarTimeInMillis
 				- System.currentTimeMillis();
-		long remainderSec = timeDiffInMillis / 1000;
-		long remainderMin = remainderSec / 60;
-		long remainderHour = remainderMin / 60;
+		long remainderSec = remainderMillis / 1000;
+		long remainderMin = 0;
+		long remainderHour = 0;
+		long remainderDay = 0;
+		
+		if(remainderSec >= 60){
+			remainderMin = remainderSec / 60;
+			remainderSec = remainderSec % 60;
+		}
+		
+		if(remainderMin >= 60){
+			remainderHour = remainderMin / 60;
+			remainderMin = remainderMin % 60;
+		}
+		
+		if(remainderHour >= 24){
+			remainderDay = remainderHour / 24;
+			remainderHour = remainderHour % 24;
+		}
 
 		AlarmManager am = (AlarmManager) getSystemService(ALARM_SERVICE);
 		am.setRepeating(AlarmManager.RTC_WAKEUP, calendarTimeInMillis, 0,
@@ -118,7 +134,7 @@ public class ReservationSearchSetActivity extends Activity implements
 
 		Toast.makeText(
 				ReservationSearchSetActivity.this,
-				remainderHour + "시간" + remainderMin + "분" + remainderSec
+				remainderDay + "일" + remainderHour + "시간" + remainderMin + "분" + remainderSec
 						+ "초 후에 알람이 울립니다.", Toast.LENGTH_LONG).show();
 		finish();
 	}
